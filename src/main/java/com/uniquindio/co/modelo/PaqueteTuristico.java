@@ -1,13 +1,15 @@
 package com.uniquindio.co.modelo;
 import java.util.List;
+
+import com.uniquindio.co.modelo.producto.ProductoTuristico;
 public class PaqueteTuristico {
 
     private String codigo;
     private String nombre;
     private double descuento;
-    private List<IContenible> listaContenidos;
+    private List<ProductoTuristico> listaContenidos;
 
-    public PaqueteTuristico(String codigo, String nombre, double descuento, List<IContenible> listaContenidos) {
+    public PaqueteTuristico(String codigo, String nombre, double descuento, List<ProductoTuristico> listaContenidos) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.descuento = descuento;
@@ -38,11 +40,11 @@ public class PaqueteTuristico {
         this.descuento = descuento;
     }
 
-    public List<IContenible> getListaContenidos() {
+    public List<ProductoTuristico> getListaContenidos() {
         return listaContenidos;
     }
 
-    public void setListaContenidos(List<IContenible> listaContenidos) {
+    public void setListaContenidos(List<ProductoTuristico> listaContenidos) {
         this.listaContenidos = listaContenidos;
     }
 

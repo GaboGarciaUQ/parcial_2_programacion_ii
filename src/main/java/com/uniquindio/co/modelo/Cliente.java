@@ -1,5 +1,7 @@
 package com.uniquindio.co.modelo;
+
 import java.util.List;
+import com.uniquindio.co.modelo.dominio.*;
 public class Cliente {
 
     private String id;
