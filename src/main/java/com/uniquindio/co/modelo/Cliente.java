@@ -1,5 +1,11 @@
 package com.uniquindio.co.modelo;
+<<<<<<< HEAD
 import java.util.List;
+=======
+
+import java.util.List;
+import com.uniquindio.co.modelo.dominio.*;
+>>>>>>> origin/ANDRES_CAMILO_CARVAJAL_FIGUEROA
 public class Cliente {
 
     private String id;
