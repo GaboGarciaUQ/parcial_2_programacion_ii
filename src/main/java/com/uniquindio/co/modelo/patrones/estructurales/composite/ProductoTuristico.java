@@ -1,9 +1,8 @@
-package com.uniquindio.co.modelo.producto;
+package com.uniquindio.co.modelo.patrones.estructurales.composite;
+
 import java.util.List;
-import com.uniquindio.co.modelo.Actividad;
 
 public interface ProductoTuristico {
-    
     String getCodigo();
     String getNombre();
     double getPrecioPorPersona();
