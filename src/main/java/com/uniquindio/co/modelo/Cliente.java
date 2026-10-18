@@ -1,11 +1,7 @@
 package com.uniquindio.co.modelo;
-<<<<<<< HEAD
-import java.util.List;
-=======
-
 import java.util.List;
 import com.uniquindio.co.modelo.dominio.*;
->>>>>>> origin/ANDRES_CAMILO_CARVAJAL_FIGUEROA
+
 public class Cliente {
 
     private String id;
@@ -24,6 +20,14 @@ public class Cliente {
         this.pais = pais;
         this.idioma = idioma;
         this.listaReservas = listaReservas;
+    }
+
+    public String consultarReservas(){
+        String listareservas = "";
+        for(Reserva reserva : listaReservas){
+            listareservas += (reserva.getProducto().getNombre() + " : " + reserva.getFechaViaje() + " , ");
+        }
+        return listareservas;
     }
 
     public String getId() {
@@ -76,10 +80,6 @@ public class Cliente {
 
     public List<Reserva> getListaReservas() {
         return listaReservas;
-    }
-
-    public void setListaReservas(List<Reserva> listaReservas) {
-        this.listaReservas = listaReservas;
     }
 
 }

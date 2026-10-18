@@ -1,5 +1,11 @@
 package com.uniquindio.co.modelo;
-public class Actividad {
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.uniquindio.co.modelo.dominio.Reserva;
+import com.uniquindio.co.modelo.producto.ProductoTuristico;
+public class Actividad implements ProductoTuristico {
 
     private String codigo;
     private String nombre;
@@ -10,6 +16,8 @@ public class Actividad {
     private NivelDificultad dificultad;
     private Estado estado;
 
+    private Agencia theAgencia;
+
     public Actividad(String codigo, String nombre, String municipio, int horas, double precio, int cupomaximo, NivelDificultad dificultad, Estado estado){
         this.codigo = codigo;
         this.nombre = nombre;
@@ -19,9 +27,9 @@ public class Actividad {
         this.cupomaximo = cupomaximo;
         this.dificultad = dificultad;
         this.estado = estado;
-    }
+    } 
 
-    public String getCodigo() {
+    public String getCodigo(){
         return codigo;
     }
 
@@ -45,19 +53,19 @@ public class Actividad {
         this.municipio = municipio;
     }
 
-    public int getHoras() {
+    public int getDuracionHoras() {
         return horas;
     }
 
-    public void setHoras(int horas) {
+    public void setDuracionHoras(int horas) {
         this.horas = horas;
     }
 
-    public double getPrecio() {
+    public double getPrecioPorPersona() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecioPorPersona(double precio) {
         this.precio = precio;
     }
 
@@ -83,6 +91,38 @@ public class Actividad {
 
     public void setEstado(Estado estado) {
         this.estado = estado;
+    }
+
+    public List<Actividad> getActividades(){
+        List<Actividad> actividad = new ArrayList<>();
+        actividad.add(this);
+        return actividad;
+    }
+
+    public boolean tieneActividadSuspendida(){
+        if(this.estado == Estado.SUSPENDIDA){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean contiene(ProductoTuristico otro){
+        return false;
+    }
+
+    public boolean consultarDisponibilidad(LocalDate fecha, int cantidadViajeros){
+        int viajerosreservados = 0;
+        for( Reserva reserva : theAgencia.getListaReservas()){
+            if(reserva.getProducto().getActividades().contains(this)){
+                if((reserva.getFechaViaje().toLocalDate()).isEqual(fecha)){
+                    viajerosreservados += reserva.getNumViajeros();
+                }
+            }
+        }
+        if(viajerosreservados+cantidadViajeros>this.getCupomaximo()){
+            return false;
+        }
+        return true;
     }
 
 }

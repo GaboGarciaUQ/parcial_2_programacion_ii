@@ -73,21 +73,46 @@ public class Reserva {
         
     }
 
+    public double calcularValor(){
+        double valor = 0;
+        valor += (producto.getPrecioPorPersona()*numViajeros);
+        valor += calcularCostoGuia();
+        valor += calcularCostoSeguro();
+        valor += calcularCostoTransporte();
+        return valor;
+    }
 
+    public double calcularCostoGuia(){
+        double costoguia = 0;
+        if(guia != null){
+            costoguia = guia.getTarifadia()*(Math.ceil(producto.getDuracionHoras()/HORA_POR_DIA_GUIA));
+        }
+        return costoguia;
+    }
 
+    public double calcularCostoTransporte(){
+        double costotransporte = 0;
+        if(transporte == true){
+            costotransporte = TARIFA_TRANSPORTE*numViajeros;
+        }
+        return costotransporte;
+    }
 
-
-    // public int calcularValor(){
-
-    // }
-
-    // private int calcularCostoGuia(){
-
-    // }
+    public double calcularCostoSeguro(){
+        double costoseguro = 0;
+        if(seguro == true){
+            costoseguro = TARIFA_SEGURO*numViajeros;
+        }
+        return costoseguro;
+    }
 
     public void confirmar(int numero){
         this.numero=numero;
     }
+
+    // public boolean validarDatos(){
+    
+    // }
 
     // public boolean estaConfirmada(){
         
@@ -100,8 +125,5 @@ public class Reserva {
     // public String toString(){
 
     // } 
-    
-
-    
-    
+       
 }

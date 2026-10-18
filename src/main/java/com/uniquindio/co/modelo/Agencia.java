@@ -1,5 +1,10 @@
 package com.uniquindio.co.modelo;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import com.uniquindio.co.modelo.dominio.Reserva;
+import com.uniquindio.co.modelo.producto.ProductoTuristico;
+
 public class Agencia {
 
     private String nombre;
@@ -45,8 +50,8 @@ public class Agencia {
         listaActividades.add(actividad);
     }
 
-    public void RegistrarPaqueteTuristico(String codigo, String nombre, double descuento, List<IContenible> listaContenidos){
-        PaqueteTuristico paquete = new PaqueteTuristico(codigo, nombre, descuento, listaContenidos)
+    public void RegistrarPaqueteTuristico(String codigo, String nombre, double descuento, List<ProductoTuristico> listaContenidos){
+        PaqueteTuristico paquete = new PaqueteTuristico(codigo, nombre, descuento, listaContenidos);
         listaPaquetesTuristicos.add(paquete);
     }
 
@@ -54,11 +59,46 @@ public class Agencia {
         //Este tambien se hace con el builder que no hemos construido.
     }
 
-    public GenerarReporteIngresos(){
+    public double GenerarReporteIngresos(LocalDateTime fechaini, LocalDateTime fechafin){
+        double ingresos = 0;
         for(Reserva reserva : listaReservas){
-            
+            if(reserva.getFechaViaje().isAfter(fechaini) && reserva.getFechaViaje().isBefore(fechafin)){
+                ingresos += reserva.calcularValor();
+            }
         }
+        return ingresos;
     }
+
+    public String GenerarReporteProductoMasVendido(){
+
+        List<ProductoTuristico> listaProductos = new ArrayList<ProductoTuristico>();
+        listaProductos.addAll(listaActividades);
+        listaProductos.addAll(listaPaquetesTuristicos);
+        ProductoTuristico productomasvendido = null;
+        String tipoproducto;
+        int viajerosacumulados = 0;
+
+        for(ProductoTuristico producto : listaProductos){
+            int viajeros = 0;
+            for(Reserva reserva : listaReservas){
+                if(reserva.getProducto() == producto){
+                    viajeros += reserva.getNumViajeros();
+                }
+            }
+            if(viajeros>viajerosacumulados){
+                productomasvendido = producto;
+                viajerosacumulados = viajeros;
+            }
+        }
+
+        if(productomasvendido instanceof Actividad){
+            tipoproducto = "la Actividad: ";
+        }tipoproducto = "el Paquete Turistico: ";
+
+        return "El producto que mas viajeros ha movido en la Agencia es " + tipoproducto + productomasvendido.getNombre() + "con un total de " + viajerosacumulados + " viajeros";
+        
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -113,6 +153,26 @@ public class Agencia {
 
     public void setPaginaweb(String paginaweb) {
         this.paginaweb = paginaweb;
+    }
+
+    public List<Cliente> getListaClientes() {
+        return listaClientes;
+    }
+
+    public List<Guia> getListaGuias() {
+        return listaGuias;
+    }
+
+    public List<Actividad> getListaActividades() {
+        return listaActividades;
+    }
+
+    public List<PaqueteTuristico> getListaPaquetesTuristicos() {
+        return listaPaquetesTuristicos;
+    }
+
+    public List<Reserva> getListaReservas() {
+        return listaReservas;
     }
 
 }
