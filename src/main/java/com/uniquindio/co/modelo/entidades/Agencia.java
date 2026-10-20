@@ -42,7 +42,6 @@ public class Agencia {
         this.listaReservas = new ArrayList<>();
     }
 
-
     public void registrarCliente(String id, String nombre, String telefono, String correo,
                                  String pais, String idioma) {
         if (buscarCliente(id) != null) {
@@ -131,8 +130,10 @@ public class Agencia {
     public double generarReporteIngresos(LocalDate fechaini, LocalDate fechafin) {
         double ingresos = 0;
         for (Reserva reserva : listaReservas) {
-            if (reserva.viajaEnPeriodo(fechaini, fechafin)) {
-                ingresos += reserva.calcularValor();
+            if(reserva.estaConfirmada()){
+                if (reserva.viajaEnPeriodo(fechaini, fechafin)) {
+                    ingresos += reserva.calcularValor();
+                }
             }
         }
         return ingresos;
@@ -145,10 +146,13 @@ public class Agencia {
         for (ProductoTuristico producto : getListaProductos()) {
             int viajeros = 0;
             for (Reserva reserva : listaReservas) {
-                if (reserva.getProducto() == producto) {
-                    viajeros += reserva.getNumViajeros();
+                if(reserva.estaConfirmada()){
+                    if (reserva.getProducto() == producto) {
+                        viajeros += reserva.getNumViajeros();
+                    }
                 }
             }
+
             if (viajeros > viajerosacumulados) {
                 productomasvendido = producto;
                 viajerosacumulados = viajeros;
