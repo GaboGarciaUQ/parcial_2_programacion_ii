@@ -57,7 +57,13 @@ public class Main {
 
         try{
             PaqueteTuristico pt002 = new PaqueteTuristico("PT-002","Aventura Salento", 25);
-            System.out.println(pt001.getDescuento()+"%");
+            System.out.println(pt002.getDescuento()+"%");
+        } catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
+
+        try{
+           pt001.setDescuento(25);
         } catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
         }
@@ -110,8 +116,21 @@ public class Main {
             System.out.println(false);
         }
 
+        if(r004.calcularCostoGuia()==240000.0){
+            System.out.println(true);
+        }else{
+            System.out.println(false);
+        }
+
         //RN-005
         System.out.println("PRUEBA RN-005: ");
+
+        Actividad a005 = new Actividad("A-005", "Parque Cafetero", "La Tebaida", 5, 60_000, 10,
+        NivelDificultad.MEDIA, EstadoActividad.DISPONIBLE);
+        Actividad a006 = new Actividad("A-006", "Nevado", "Tolima", 5, 60_000, 10,
+        NivelDificultad.MEDIA, EstadoActividad.DISPONIBLE);
+        Reserva r005 = new ReservaBuilder(c001, a005, LocalDate.of(2026, 11, 15), 4).construir();
+        Reserva r006 = new ReservaBuilder(c001, a006, LocalDate.of(2026, 11, 15), 4).construir();
 
         GestorCupos gc001 = new GestorCupos(rutaverde);
         ServicioCorreo sc001 = new ServicioCorreo();
@@ -120,15 +139,28 @@ public class Main {
 
         // Caso que cumple
 
-        crf001.confirmar(r001, "4539 1488 0343 6467", CanalVoucher.ASESOR);
+        crf001.confirmar(r005, "4539 1488 0343 6467", CanalVoucher.ASESOR);
 
         // Caso que rompe
 
         try{
-            crf001.confirmar(r002, "4539 1488 0343 6468", CanalVoucher.ASESOR);
+            crf001.confirmar(r006, "4539 1488 0343 6468", CanalVoucher.ASESOR);
         } catch (IllegalStateException e){
             System.out.println(e.getMessage());
         }
+
+        // Verificacion mas exacta de Luhn 
+
+        System.out.println("VERIFICACION EXACTA LUHN: ");
+
+        // Caso que cumple
+
+        System.out.println(ValidadorTarjeta.esValida("4539 1488 0343 6467"));
+
+        // Caso que rompe
+
+        System.out.println(ValidadorTarjeta.esValida("4539 1488 0343 6468"));
+
         
     }
 
