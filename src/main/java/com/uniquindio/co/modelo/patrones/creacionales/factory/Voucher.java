@@ -8,7 +8,6 @@ public abstract class Voucher {
     protected final Reserva reserva;
     protected final Agencia agencia;
 
-    // Constantes
     protected static final String POLITICA_CANCELACION =
             "Cancelación sin costo hasta 48 horas antes del viaje.";
 
@@ -17,7 +16,6 @@ public abstract class Voucher {
         this.agencia = agencia;
     }
 
-    // Método plantilla: el orden es fijo y las subclases no lo pueden cambiar
     public final String emitir() {
         return generarEncabezado() + separador()
              + generarDetalle() + separador()

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<HBox xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" spacing="20" styleClass="vista" fx:controller="com.uniquindio.co.controlador.GuiasController">
+    <VBox spacing="10" prefWidth="290" minWidth="290" styleClass="tarjeta">
+        <Label text="Datos del guía" styleClass="titulo"/>
+        <TextField fx:id="tfId" promptText="Identificación"/>
+        <TextField fx:id="tfNombre" promptText="Nombre"/>
+        <TextField fx:id="tfTelefono" promptText="Teléfono"/>
+        <TextField fx:id="tfTarifa" promptText="Tarifa por día (COP)"/>
+        <Label text="Idiomas que habla (Ctrl para varios)"/>
+        <ListView fx:id="lvIdiomas" prefHeight="125"/>
+<FlowPane hgap="8" vgap="8">
+    <Button text="Registrar" onAction="#registrar" styleClass="boton-principal"/>
+    <Button text="Guardar cambios" onAction="#actualizar" styleClass="boton-secundario"/>
+    <Button text="Limpiar" onAction="#limpiar" styleClass="boton-suave"/>
+</FlowPane>
+    </VBox>
+    <TableView fx:id="tabla" HBox.hgrow="ALWAYS"/>
+</HBox>

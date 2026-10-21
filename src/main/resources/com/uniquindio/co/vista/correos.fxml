@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<HBox xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1"
+      spacing="20" styleClass="vista" fx:controller="com.uniquindio.co.controlador.CorreosController">
+    <VBox spacing="10" HBox.hgrow="ALWAYS">
+        <Label text="Correos enviados" styleClass="titulo"/>
+        <TableView fx:id="tabla" VBox.vgrow="ALWAYS"/>
+    </VBox>
+    <VBox spacing="8" styleClass="tarjeta" prefWidth="420" minWidth="420">
+        <Label text="Mensaje" styleClass="titulo"/>
+        <TextArea fx:id="taDetalle" editable="false" wrapText="true" VBox.vgrow="ALWAYS"/>
+    </VBox>
+</HBox>

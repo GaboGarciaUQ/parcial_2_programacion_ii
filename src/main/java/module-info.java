@@ -4,7 +4,9 @@ module com.uniquindio.co {
     requires javafx.fxml;
 
     opens com.uniquindio.co to javafx.fxml;
+    opens com.uniquindio.co.controlador to javafx.fxml;
     exports com.uniquindio.co;
+    exports com.uniquindio.co.controlador;
 
     exports com.uniquindio.co.modelo.entidades;
     exports com.uniquindio.co.modelo.entidades.enums;

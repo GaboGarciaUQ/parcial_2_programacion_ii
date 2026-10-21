@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1"
+      spacing="16" styleClass="vista" fx:controller="com.uniquindio.co.controlador.ReportesController">
+    <VBox spacing="12" styleClass="tarjeta" maxWidth="640">
+        <Label text="Reportes" styleClass="titulo"/>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Desde"/><DatePicker fx:id="dpInicio"/>
+            <Label text="Hasta"/><DatePicker fx:id="dpFin"/>
+            <Button text="Generar" onAction="#generar" styleClass="boton-principal"/>
+        </HBox>
+    </VBox>
+    <VBox spacing="10" styleClass="tarjeta" maxWidth="640">
+        <Label fx:id="lblIngresos" styleClass="dato"/>
+        <Label fx:id="lblCentavos" styleClass="dato"/>
+        <Label fx:id="lblProducto" styleClass="dato" wrapText="true"/>
+    </VBox>
+    <Label text="Cobros enviados a PagoAndino" styleClass="titulo"/>
+    <TableView fx:id="tablaCobros" VBox.vgrow="ALWAYS"/>
+</VBox>

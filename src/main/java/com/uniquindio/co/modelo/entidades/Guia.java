@@ -23,7 +23,7 @@ public class Guia {
         this.id = id;
         this.nombre = nombre;
         this.idiomas = new ArrayList<>(idiomas);
-        this.telefono = telefono;
+        this.telefono = validarTelefono(telefono);
         this.tarifadia = tarifadia;
     }
 
@@ -42,6 +42,14 @@ public class Guia {
             idiomas.add(idioma);
         }
     }
+    private static String validarTelefono(String telefono) {
+    String limpio = telefono == null ? "" : telefono.replace(" ", "");
+    if (!limpio.matches("^\\+?\\d{7,15}$")) {
+        throw new IllegalArgumentException(
+                "El teléfono solo puede tener números (de 7 a 15 dígitos, con + opcional al inicio)");
+    }
+    return limpio;
+    }
 
 
     public String getId() { return id; }
@@ -52,7 +60,7 @@ public class Guia {
     public List<String> getIdiomas() { return Collections.unmodifiableList(idiomas); }
 
     public String getTelefono() { return telefono; }
-    public void setTelefono(String telefono) { this.telefono = telefono; }
+    public void setTelefono(String telefono) { this.telefono = validarTelefono(telefono); }
 
     public double getTarifadia() { return tarifadia; }
     public void setTarifadia(double tarifadia) {

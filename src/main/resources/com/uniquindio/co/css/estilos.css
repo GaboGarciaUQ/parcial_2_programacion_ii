@@ -1,0 +1,50 @@
+.root {
+    -azul: #99B7F5;
+    -verde: #267F53;
+    -naranja: #F5793B;
+    -rosa: #F296BD;
+    -amarillo: #FCCA59;
+    -texto: #1F2A37;
+    -fondo: #F7F9FF;
+    -fx-background-color: -fondo;
+    -fx-font-family: "Segoe UI", "System";
+    -fx-font-size: 13px;
+}
+.label { -fx-text-fill: -texto; }
+.cabecera { -fx-background-color: -verde; -fx-padding: 14 22; }
+.cabecera .marca { -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; }
+.menu-lateral { -fx-background-color: -azul; -fx-padding: 16 12; -fx-spacing: 6; }
+.menu-boton {
+    -fx-background-color: transparent; -fx-text-fill: -texto; -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT; -fx-pref-width: 180; -fx-padding: 10 14;
+    -fx-background-radius: 8; -fx-cursor: hand;
+}
+.menu-boton:hover { -fx-background-color: -rosa; }
+.menu-boton:focused { -fx-background-color: -amarillo; }
+.vista { -fx-padding: 20; }
+.tarjeta { -fx-background-color: white; -fx-background-radius: 10; -fx-padding: 16;
+           -fx-border-color: derive(-azul, 40%); -fx-border-radius: 10; }
+.scroll-pane { -fx-background-color: transparent; }
+.scroll-pane > .viewport { -fx-background-color: transparent; }
+.titulo { -fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: -verde; }
+.dato { -fx-font-size: 15px; -fx-font-weight: bold; }
+.boton-principal, .boton-secundario, .boton-suave {
+    -fx-background-radius: 8; -fx-padding: 8 14; -fx-font-weight: bold; -fx-cursor: hand;
+}
+.boton-principal { -fx-background-color: -verde; -fx-text-fill: white; }
+.boton-principal:hover { -fx-background-color: derive(-verde, 18%); }
+.boton-secundario { -fx-background-color: -naranja; -fx-text-fill: white; }
+.boton-secundario:hover { -fx-background-color: derive(-naranja, 15%); }
+.boton-suave { -fx-background-color: -rosa; -fx-text-fill: -texto; }
+.boton-suave:hover { -fx-background-color: derive(-rosa, 20%); }
+.text-field:focused, .text-area:focused, .combo-box-base:focused, .date-picker:focused {
+    -fx-focus-color: -verde; -fx-faint-focus-color: transparent;
+}
+.table-view .column-header-background, .table-view .column-header, .table-view .filler {
+    -fx-background-color: -azul;
+}
+.table-view .column-header .label { -fx-text-fill: -texto; -fx-font-weight: bold; }
+.table-row-cell:filled:selected { -fx-background-color: -amarillo; }
+.table-row-cell:filled:selected .table-cell { -fx-text-fill: -texto; }
+.list-cell:filled:selected, .tree-cell:filled:selected { -fx-background-color: -amarillo; -fx-text-fill: -texto; }
+.voucher { -fx-font-family: "Consolas", "Monospaced"; }
