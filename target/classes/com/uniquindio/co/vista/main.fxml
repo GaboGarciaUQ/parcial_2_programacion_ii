@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uniquindio.co.controlador.MainController">
+    <top>
+        <HBox styleClass="cabecera"><Label fx:id="lblAgencia" styleClass="marca"/></HBox>
+    </top>
+    <left>
+        <VBox styleClass="menu-lateral">
+            <Button text="Clientes" onAction="#mostrarClientes" styleClass="menu-boton"/>
+            <Button text="Guías" onAction="#mostrarGuias" styleClass="menu-boton"/>
+            <Button text="Actividades" onAction="#mostrarActividades" styleClass="menu-boton"/>
+            <Button text="Paquetes" onAction="#mostrarPaquetes" styleClass="menu-boton"/>
+            <Button text="Reservas" onAction="#mostrarReservas" styleClass="menu-boton"/>
+            <Button text="Kiosco" onAction="#mostrarKiosco" styleClass="menu-boton"/>
+            <Button text="Correos" onAction="#mostrarCorreos" styleClass="menu-boton"/>
+            <Button text="Reportes" onAction="#mostrarReportes" styleClass="menu-boton"/>
+        </VBox>
+    </left>
+    <center><StackPane fx:id="contenido"/></center>
+</BorderPane>

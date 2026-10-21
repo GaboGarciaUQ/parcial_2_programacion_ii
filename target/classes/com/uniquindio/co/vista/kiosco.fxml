@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1"
+      spacing="16" styleClass="vista" fx:controller="com.uniquindio.co.controlador.KioscoController">
+    <VBox spacing="10" styleClass="tarjeta" maxWidth="480">
+        <Label text="Kiosco - Terminal de transporte de Armenia" styleClass="titulo"/>
+        <TextField fx:id="tfDocumento" promptText="Documento del cliente"/>
+        <ComboBox fx:id="cbProducto" promptText="Actividad o paquete" maxWidth="Infinity"/>
+        <DatePicker fx:id="dpFecha" promptText="Fecha del viaje" maxWidth="Infinity"/>
+        <HBox spacing="8" alignment="CENTER_LEFT">
+            <Label text="Viajeros"/><Spinner fx:id="spViajeros"/>
+        </HBox>
+        <TextField fx:id="tfTarjeta" promptText="Número de tarjeta"/>
+        <Button text="Reservar y pagar" onAction="#reservar" styleClass="boton-principal" maxWidth="Infinity"/>
+    </VBox>
+    <VBox spacing="8" styleClass="tarjeta" maxWidth="480">
+        <Label text="Tiquete" styleClass="titulo"/>
+        <TextArea fx:id="taTiquete" editable="false" prefRowCount="3" wrapText="true" styleClass="voucher"/>
+    </VBox>
+</VBox>

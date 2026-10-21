@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<HBox xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1"
+      spacing="20" styleClass="vista" fx:controller="com.uniquindio.co.controlador.ConfirmarReservaController">
+    <VBox spacing="10" prefWidth="380" minWidth="380" styleClass="tarjeta">
+        <Label text="Confirmar reserva" styleClass="titulo"/>
+        <Label fx:id="lblResumen" wrapText="true"/>
+        <Separator/>
+        <TextField fx:id="tfTarjeta" promptText="Número de tarjeta"/>
+        <ComboBox fx:id="cbCanal" maxWidth="Infinity"/>
+        <FlowPane hgap="8" vgap="8">
+            <Button fx:id="btnConfirmar" text="Pagar y confirmar" onAction="#confirmar" styleClass="boton-principal"/>
+            <Button text="Cancelar" onAction="#cancelar" styleClass="boton-secundario"/>
+            <Button text="Nueva reserva" onAction="#volver" styleClass="boton-suave"/>
+        </FlowPane>
+    </VBox>
+    <VBox spacing="8" styleClass="tarjeta" HBox.hgrow="ALWAYS">
+        <Label text="Voucher emitido" styleClass="titulo"/>
+        <TextArea fx:id="taVoucher" editable="false" styleClass="voucher" VBox.vgrow="ALWAYS"/>
+    </VBox>
+</HBox>

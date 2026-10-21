@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<HBox xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" spacing="20" styleClass="vista" fx:controller="com.uniquindio.co.controlador.ClientesController">
+    <VBox spacing="10" prefWidth="290" minWidth="290" styleClass="tarjeta">
+        <Label text="Datos del cliente" styleClass="titulo"/>
+        <TextField fx:id="tfId" promptText="Documento o pasaporte"/>
+        <TextField fx:id="tfNombre" promptText="Nombre completo"/>
+        <TextField fx:id="tfTelefono" promptText="Teléfono"/>
+        <TextField fx:id="tfCorreo" promptText="Correo electrónico"/>
+        <TextField fx:id="tfPais" promptText="País de origen"/>
+        <ComboBox fx:id="cbIdioma" promptText="Idioma preferido" maxWidth="Infinity"/>
+<FlowPane hgap="8" vgap="8">
+    <Button text="Registrar" onAction="#registrar" styleClass="boton-principal"/>
+    <Button text="Guardar cambios" onAction="#actualizar" styleClass="boton-secundario"/>
+    <Button text="Limpiar" onAction="#limpiar" styleClass="boton-suave"/>
+</FlowPane>
+    </VBox>
+    <TableView fx:id="tabla" HBox.hgrow="ALWAYS"/>
+</HBox>

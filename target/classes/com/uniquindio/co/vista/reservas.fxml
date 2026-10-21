@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<HBox xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1"
+      spacing="20" styleClass="vista" fx:controller="com.uniquindio.co.controlador.ReservasController">
+    <ScrollPane fitToWidth="true" prefWidth="360" minWidth="360" hbarPolicy="NEVER">
+        <VBox spacing="10" styleClass="tarjeta">
+            <Label text="Nueva reserva" styleClass="titulo"/>
+            <ComboBox fx:id="cbCliente" promptText="Cliente" maxWidth="Infinity"/>
+            <ComboBox fx:id="cbProducto" promptText="Actividad o paquete" maxWidth="Infinity"/>
+            <DatePicker fx:id="dpFecha" promptText="Fecha del viaje" maxWidth="Infinity"/>
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="Viajeros"/>
+                <Spinner fx:id="spViajeros"/>
+            </HBox>
+            <CheckBox fx:id="chkGuia" text="Incluir guía"/>
+            <ComboBox fx:id="cbGuia" promptText="Guía" maxWidth="Infinity"/>
+            <CheckBox fx:id="chkTransporte" text="Transporte desde el hotel ($35.000 p/p)" wrapText="true"/>
+            <CheckBox fx:id="chkSeguro" text="Seguro de viaje ($15.000 p/p)" wrapText="true"/>
+            <TextArea fx:id="taObservaciones" promptText="Alergias, movilidad reducida, alimentación"
+                      prefRowCount="3" wrapText="true"/>
+            <Button text="Continuar al pago" onAction="#continuar" styleClass="boton-principal" maxWidth="Infinity"/>
+        </VBox>
+    </ScrollPane>
+    <VBox spacing="12" HBox.hgrow="ALWAYS">
+        <Label text="Reservas confirmadas" styleClass="titulo"/>
+        <TableView fx:id="tabla" VBox.vgrow="ALWAYS"/>
+    </VBox>
+</HBox>

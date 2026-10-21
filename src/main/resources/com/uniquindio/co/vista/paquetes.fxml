@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<HBox xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" spacing="20" styleClass="vista" fx:controller="com.uniquindio.co.controlador.PaquetesController">
+    <VBox spacing="10" prefWidth="300" minWidth="300" styleClass="tarjeta">
+        <Label text="Nuevo paquete" styleClass="titulo"/>
+        <TextField fx:id="tfCodigo" promptText="Código"/>
+        <TextField fx:id="tfNombre" promptText="Nombre"/>
+        <TextField fx:id="tfDescuento" promptText="Descuento (0 a 20 %)"/>
+        <Label text="Contenido (Ctrl para varios)"/>
+        <ListView fx:id="lvContenidos" VBox.vgrow="ALWAYS"/>
+        <Button text="Crear paquete" onAction="#registrar" styleClass="boton-principal" maxWidth="Infinity"/>
+        <Button text="Agregar al paquete seleccionado" onAction="#agregarAlPaquete" styleClass="boton-secundario" maxWidth="Infinity"/>
+    </VBox>
+    <VBox spacing="12" HBox.hgrow="ALWAYS">
+        <TableView fx:id="tabla" prefHeight="260"/>
+        <VBox spacing="8" styleClass="tarjeta" VBox.vgrow="ALWAYS">
+            <Label text="Detalle del producto" styleClass="titulo"/>
+            <Label fx:id="lblResumen" wrapText="true"/>
+            <TreeView fx:id="arbol" VBox.vgrow="ALWAYS"/>
+        </VBox>
+    </VBox>
+</HBox>
